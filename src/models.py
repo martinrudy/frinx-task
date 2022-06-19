@@ -1,6 +1,7 @@
-from sqlalchemy import Table, Column, Integer, String, ForeignKey, Boolean, DateTime, Float
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.ext.mutable import MutableDict
 from database import Base
-import datetime
 
 
 class Interface(Base):
@@ -9,7 +10,7 @@ class Interface(Base):
     connection = Column(Integer)
     name = Column(String(250), nullable = False)
     description = Column(String(250))
-    config = Column(Float)
+    config = Column(MutableDict.as_mutable(JSONB))
     type = Column(String(50))
     infra_type = Column(String(50))
     port_channel_id = Column(Integer)
