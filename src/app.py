@@ -5,7 +5,6 @@ from models import (
 import json
 
 def add_interface():
-
     with open('configClear_v2.json', 'r') as f:
         data = json.load(f)
     
